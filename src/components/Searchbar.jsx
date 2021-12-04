@@ -1,5 +1,6 @@
 import React from 'react';
 import './Searchbar.css';
+import logo from '../clip.png';
 
 class Searchbar extends React.Component {
   state = { term: '' };
@@ -17,16 +18,24 @@ class Searchbar extends React.Component {
   render() {
     return (
       <div className="search-bar">
+        <div className="logo--div">
+          <img src={logo} className="logo" />
+          <span className="logo-title">
+            <span className="main">YouTube</span>
+            <span className="sub">Search</span>
+          </span>
+        </div>
         <form className="search-form" onSubmit={this.handleFormSubmit}>
-          <label htmlFor="search-videos">
-            {this.props.labelText || 'Search Videos'}
-          </label>
           <input
             className="search-input"
             id="search-videos"
             value={this.state.term}
             onChange={this.handleInputChange}
+            placeholder="Search"
           />
+          <button type="submit" className="search-submit">
+            {this.props.labelText || 'Go'}
+          </button>
         </form>
       </div>
     );

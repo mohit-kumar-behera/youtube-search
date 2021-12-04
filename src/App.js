@@ -7,7 +7,7 @@ import youtube from './api/youtube';
 import './App.css';
 
 class App extends React.Component {
-  state = { videos: [], label: null, selectedVideo: null };
+  state = { videos: [], label: null, selectedVideo: null, searchTerm: '' };
 
   componentDidMount() {
     this.handleSearchSubmit('');
@@ -19,7 +19,7 @@ class App extends React.Component {
 
   handleSearchSubmit = async (term) => {
     if (term === '') return;
-    this.setState({ label: 'Searching....' });
+    this.setState({ label: '....' });
 
     const response = await youtube.get('/search', {
       params: {
@@ -33,7 +33,12 @@ class App extends React.Component {
       data: { items },
     } = response;
 
-    this.setState({ videos: items, label: null, selectedVideo: items[0] });
+    this.setState({
+      videos: items,
+      label: null,
+      selectedVideo: items[0],
+      searchTerm: term,
+    });
   };
 
   render() {
@@ -49,6 +54,7 @@ class App extends React.Component {
             show={this.state.videos.length ? true : false}
           />
           <VideoList
+            term={this.state.searchTerm}
             videos={this.state.videos}
             show={this.state.videos.length ? true : false}
             onVideoSelect={this.handleVideoSelect}

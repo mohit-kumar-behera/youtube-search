@@ -7,14 +7,20 @@ class VideoList extends React.Component {
 
     return (
       <div className={`video-list ${this.props.show ? 'show' : 'hide'}`}>
-        {videos.map((video, idx) => (
-          <VideoCard
-            key={video.id.videoId}
-            index={idx}
-            video={video}
-            onClickSelect={this.props.onVideoSelect}
-          />
-        ))}
+        <div className="video-list--title">
+          <h3>{this.props.term}</h3>
+          <small>{videos.length} found results</small>
+        </div>
+        <div className="video-list--videos">
+          {videos.map((video, idx) => (
+            <VideoCard
+              key={video.id.videoId}
+              index={idx}
+              video={video}
+              onClickSelect={this.props.onVideoSelect}
+            />
+          ))}
+        </div>
       </div>
     );
   }

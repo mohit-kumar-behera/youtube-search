@@ -25,9 +25,11 @@ class VideoCard extends React.Component {
         className={`video-card ${this.state.active ? 'active' : ''}`}
         onClick={this.handleVideoClick}
       >
+        <span className="video-index">{this.props.index + 1}</span>
         <img
           src={video.snippet.thumbnails.default.url}
           alt={video.snippet.title}
+          className="video-img"
         />
         <h5 className="video-title">{video.snippet.title}</h5>
       </div>
