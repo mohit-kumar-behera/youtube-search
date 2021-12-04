@@ -1,0 +1,80 @@
+.video-container,
+.video-card {
+  display: flex;
+  flex-direction: row;
+}
+.video-container {
+  height: 80vh;
+  overflow-y: auto;
+}
+
+.video-container > * {
+  margin: 0;
+  color: white;
+}
+.video-container > .video-detail {
+  width: 60%;
+  background-color: #282828;
+}
+.video-container > .video-list {
+  width: 40%;
+  background-color: #28282809;
+}
+
+.video-container > .video-detail,
+.video-container > .video-list {
+  height: 100%;
+  overflow-y: auto;
+  padding: 1rem;
+  display: block;
+}
+.video-container > .video-detail.show,
+.video-container > .video-list.show {
+  display: block;
+}
+.video-container > .video-detail.hide,
+.video-container > .video-list.hide {
+  display: none;
+}
+
+.video-detail > *:not(:last-child) {
+  margin-bottom: 1rem;
+}
+iframe {
+  width: 100%;
+  height: 60vh;
+}
+
+.video-segment {
+  border: 1px solid white;
+  padding: 0.4rem 0.7rem;
+}
+
+.video-card {
+  border-radius: 5px;
+  border: 0.7px solid lightgrey;
+  color: #282828;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.video-card:hover {
+  background-color: #28282815;
+}
+.video-card.active {
+  background-color: #ff000035;
+  pointer-events: none;
+}
+.video-card:not(:last-child) {
+  margin-bottom: 1rem;
+}
+
+.video-card > img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  align-self: center;
+}
+
+.video-card > .video-title {
+  margin-left: 0.5rem;
+}
